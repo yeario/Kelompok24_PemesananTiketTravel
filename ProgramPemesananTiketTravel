@@ -1,92 +1,118 @@
-print('\t',"INDENTURE TOUR AND TRAVEL") # tampilan awal
-print("=========================================")
-print('\t',"Teman Perjalanan Anda")
-print("Menu : ")
-print("1. Pesanan Baru")
-print("2. Reschedule")
-print("3. Pembatalan (cancel)")
+import os
+import sys
 
-menu = input("Masukkan menu pilihan Anda(1/2/3): ") # input pilihan menu 
+def menu():
+    print('\t',"INDENTURE TOUR AND TRAVEL") # tampilan awal
+    print("=========================================")
+    print('\t',"Teman Perjalanan Anda")
+    print("Menu : ")
+    print("1. Pesanan Baru")
+    print("2. Reschedule")
+    print("3. Pembatalan (cancel)")
 
-if (menu== "1"):
-    print("1. One Way")
-    print("2. Return")
-    rute = input("Anda akan melakukan perjalanan(1/2): ") # memilih penerbangan
-    if rute=="1":
-        tanggal = input("Masukkan tanggal keberangkatan Anda(DD/MM/YYYY): ") # input tanggal berangkat apabila memilih one way
-    else:
-        tanggal1 =input("Masukkan tanggal keberangkatan Anda(DD/MM/YYYY): ") # input tanggal berangkat apabila memilih return
-        tanggal2 = input("Masukkan tanggal pulang Anda(DD/MM/YYYY): ") # input tanggal pulang apabila memilih return
+    menu = input("Masukkan menu pilihan Anda(1/2/3): ") # input pilihan menu
+    os.system('cls')
 
-    print("Pilihan rute dan tarif:")
-    print("1. SOC-CGK Rp 300.000 ")
-    print("2. SOC-BDG Rp 250.000 ")
-    print("3. SOC-BANTEN Rp 375.000 ")
-    print("4. SOC-SMG Rp 100.000 ")
-    print("5. SOC-SUB Rp 160.000 ")
-    tarif = input("Masukkan rute tujuan anda: ") # memilih rute tujuan dan tarif
-
-    if tarif == '1':
-        harga = 300000
-        print(harga)
-    elif tarif == '2':
-        harga = 250000
-        print(harga)
-    elif tarif =='3':
-        harga = 375000
-        print(harga)
-    elif tarif == '4':
-        harga = 100000
-        print(harga)
-    else:
-        harga = 160000
-        print(harga)
-
-    print("Pilih jam keberangkatan: ")
-    print("1. 09.00 WIB")
-    print("2. 20.00 WIB")
-    jam = input("Masukkan jam keberangkatan Anda(1/2): ") # memilih jam keberangkatan
-    if jam == "1":
-        print("Anda memilih berangkat pukul 09.00 WIB")
-        jmlpnp = input("Masukkan jumlah penumpang: ") # input jumlah penumpang
-        print("Jumlah penumpang: ", jmlpnp)
-    else:
-        print("Anda memilih berangkat pukul 20.00")
-        jmlpnp = input("Masukkan jumlah penumpang: ") # input jumlah penumpang
-        print("Jumlah penumpang: ", jmlpnp)
-    # belum selesai pengecekan sisa kursi
-    kapasitas = 12
-    if jmlpnp < str(kapasitas):
-        print("Maaf kursi telah habis, silahkan memilih jam/tanggal keberangkatan lain")
-    else:
-        nama = input("Masukkan nama lengkap penumpang: ")
-        ktp = input("Masukkan nomor KTP: ")
-        alamat = input("Masukkan alamat penumpang: ")
-        promo = input("apakah anda memiliki kode promo?(Y/T): ")
-        if promo == 'Y':
-            input("masukan kode promo: ")
-            hargatiket = harga * int(jmlpnp)# perhitungan masih blm jelas mengenai harga
-            harga_total = hargatiket * 0.50
-
-            print("harga total: ", harga_total)
-        elif promo == 'T':
-            hargatiket = harga * int(jmlpnp)# perhitungan masih blm jelas mengenai harga
-            harga_total = hargatiket
-            print("harga total: ", harga_total)
+    if (menu== "1"):
+        print("1. One Way")
+        print("2. Return")
+        rute = input("Anda akan melakukan perjalanan(1/2): ") # memilih penerbangan
+        if rute=="1":
+            tanggal = input("Masukkan tanggal keberangkatan Anda(DD/MM/YYYY): ") # input tanggal berangkat apabila memilih one way
+            print("Anda melakukan perjalanan one way pada", tanggal )
         else:
-            print("Maaf, promo tidak tersedia")
+            tanggal1 =input("Masukkan tanggal keberangkatan Anda(DD/MM/YYYY): ") # input tanggal berangkat apabila memilih return
+            tanggal2 = input("Masukkan tanggal pulang Anda(DD/MM/YYYY): ") # input tanggal pulang apabila memilih return
+            print("Anda melakukan perjalanan return pada", tanggal1 , " dan kembali pada ",tanggal2)
+            
+        os.system('cls')
+        print("Pilihan rute dan tarif:")
+        print("1. SOC-CGK Rp 300.000 ")
+        print("2. SOC-BDG Rp 250.000 ")
+        print("3. SOC-BANTEN Rp 375.000 ")
+        print("4. SOC-SMG Rp 100.000 ")
+        print("5. SOC-SUB Rp 160.000 ")
+        tarif = int(input("Masukkan rute tujuan anda: ")) # memilih rute tujuan dan tarif
 
-        print("pilih kelas armada: ")
-        print("1. Eksekutif")
-        print("2. Ekonomi")
-        kelas = input("Masukkan pilihan kelas armada (1/2): ")
-        if kelas == '1':
-            harga_eksekutif = harga_total + 50000
-            print("harga total: ", harga_eksekutif)
-        elif kelas == '2':
-            harga_total = hargatiket
-            print("harga total: ", harga_total)
+        if tarif == 1:
+            rute = "SOC-CGK"
+            harga = 300000
+            print("Tarif rute SOC-CGK : Rp ", harga)
+        elif tarif == 2:
+            rute = "SOC-BDG"
+            harga = 250000
+            print("Tarif rute SOC-BDG : Rp ", harga)
+        elif tarif == 3:
+            rute = "SOC-BANTEN"
+            harga = 375000
+            print("Tarif rute SOC-BANTEN: Rp ", harga)
+        elif tarif == 4:
+            rute = "SOC-SMG"
+            harga = 100000
+            print("Tarif rute SOC-SMG : Rp ", harga)
         else:
-        print("Maaf, jenis kelas armada tidak tersedia")
+            rute = "SOC-SUB"
+            harga = 160000
+            print("Tarif rute SOC-SUB : Rp ", harga)
 
-elif (menu == 2):
+        os.system('cls')
+        print("Pilih jam keberangkatan: ")
+        print("1. 09.00 WIB")
+        print("2. 20.00 WIB")
+        jam = int(input("Masukkan jam keberangkatan Anda(1/2): ")) # memilih jam keberangkatan
+        if jam == 1:
+            jam = "09.00 WIB"
+            print("Anda memilih berangkat pukul ", jam)
+            jmlpnp = int(input("Masukkan jumlah penumpang: ")) # input jumlah penumpang
+            print("Jumlah penumpang: ", jmlpnp)
+            hargatiket = harga * int(jmlpnp)
+            print("Harga total: ", hargatiket)
+        else:
+            jam = "20.00 WIB"
+            print("Anda memilih berangkat pukul ", jam)
+            jmlpnp = int(input("Masukkan jumlah penumpang: ")) # input jumlah penumpang
+            print("Jumlah penumpang: ", jmlpnp)
+            hargatiket = harga * jmlpnp
+            print("Harga total: ", hargatiket)
+            
+        # belum selesai penulisan pengecekan sisa kursi
+        os.system('cls')
+        kapasitas = 12
+        if jmlpnp < str(kapasitas):
+            print("Maaf kursi telah habis, silahkan memilih jam/tanggal keberangkatan lain")
+        else:
+            for i in range(jmlpnp):
+                nama = input("Masukkan nama lengkap penumpang: ")
+                ktp = input("Masukkan nomor KTP: ")  
+        
+            alamat = input("Masukkan alamat penumpang: ")
+            os.system('cls')
+            promo = input("apakah anda memiliki kode promo?(Y/T): ")
+            if promo == 'Y':
+                input("masukan kode promo: ")
+                hargatiket = harga * int(jmlpnp)# perhitungan masih blm jelas mengenai harga
+                harga_total = hargatiket * 0.50
+
+                print("harga total: ", harga_total)
+            elif promo == 'T':
+                hargatiket = harga * int(jmlpnp)# perhitungan masih blm jelas mengenai harga
+                harga_total = hargatiket
+                print("harga total: ", harga_total)
+            else:
+                print("Maaf, promo tidak tersedia")
+
+            print("pilih kelas armada: ")
+            print("1. Eksekutif")
+            print("2. Ekonomi")
+            kelas = input("Masukkan pilihan kelas armada (1/2): ")
+            if kelas == '1':
+                harga_eksekutif = harga_total + 50000
+                print("harga total: ", harga_eksekutif)
+            elif kelas == '2':
+                harga_total = hargatiket
+                print("harga total: ", harga_total)
+            else:
+            print("Maaf, jenis kelas armada tidak tersedia")
+
+    elif (menu == 2):
+menu()
