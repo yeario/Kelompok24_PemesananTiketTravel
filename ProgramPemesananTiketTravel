@@ -50,12 +50,10 @@ if (menu== "1"):
         print("Anda memilih berangkat pukul 09.00 WIB")
         jmlpnp = input("Masukkan jumlah penumpang: ") # input jumlah penumpang
         print("Jumlah penumpang: ", jmlpnp)
-        hargatiket = harga * int(jmlpnp) # perhitungan masih blm jelas mengenai harga
     else:
         print("Anda memilih berangkat pukul 20.00")
         jmlpnp = input("Masukkan jumlah penumpang: ") # input jumlah penumpang
         print("Jumlah penumpang: ", jmlpnp)
-        hargatiket = harga * int(jmlpnp) # perhitungan masih blm jelas mengenai harga
     # belum selesai pengecekan sisa kursi
     kapasitas = 12
     if jmlpnp < str(kapasitas):
@@ -67,12 +65,12 @@ if (menu== "1"):
         promo = input("apakah anda memiliki kode promo?(Y/T): ")
         if promo == 'Y':
             input("masukan kode promo: ")
-            hargatiket = harga * int(jmlpnp)
+            hargatiket = harga * int(jmlpnp)# perhitungan masih blm jelas mengenai harga
             harga_total = hargatiket * 0.50
 
             print("harga total: ", harga_total)
         elif promo == 'T':
-            hargatiket = harga * int(jmlpnp)
+            hargatiket = harga * int(jmlpnp)# perhitungan masih blm jelas mengenai harga
             harga_total = hargatiket
             print("harga total: ", harga_total)
         else:
@@ -83,11 +81,12 @@ if (menu== "1"):
         print("2. Ekonomi")
         kelas = input("Masukkan pilihan kelas armada (1/2): ")
         if kelas == '1':
-            harga_total = hargatiket
             harga_eksekutif = harga_total + 50000
             print("harga total: ", harga_eksekutif)
         elif kelas == '2':
             harga_total = hargatiket
             print("harga total: ", harga_total)
+        else:
+        print("Maaf, jenis kelas armada tidak tersedia)
 
 elif (menu == 2):
