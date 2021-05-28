@@ -87,6 +87,6 @@ if (menu== "1"):
             harga_total = hargatiket
             print("harga total: ", harga_total)
         else:
-        print("Maaf, jenis kelas armada tidak tersedia)
+        print("Maaf, jenis kelas armada tidak tersedia")
 
 elif (menu == 2):
