@@ -80,7 +80,7 @@ def menu():
         kapasitas = 12
         if jmlpnp < str(kapasitas):
             print("Maaf kursi telah habis, silahkan memilih jam/tanggal keberangkatan lain")
-        else:
+               else:
             for i in range(jmlpnp):
                 nama = input("Masukkan nama lengkap penumpang: ")
                 ktp = input("Masukkan nomor KTP: ")  
@@ -90,29 +90,30 @@ def menu():
             promo = input("apakah anda memiliki kode promo?(Y/T): ")
             if promo == 'Y':
                 input("masukan kode promo: ")
-                hargatiket = harga * int(jmlpnp)# perhitungan masih blm jelas mengenai harga
+                hargatiket = harga * jmlpnp
                 harga_total = hargatiket * 0.50
 
                 print("harga total: ", harga_total)
-            elif promo == 'T':
-                hargatiket = harga * int(jmlpnp)# perhitungan masih blm jelas mengenai harga
-                harga_total = hargatiket
-                print("harga total: ", harga_total)
             else:
-                print("Maaf, promo tidak tersedia")
-
+                harga_total = harga * jmlpnp
+                print("harga total: ", harga_total)
+            
+            os.system('cls')
             print("pilih kelas armada: ")
             print("1. Eksekutif")
             print("2. Ekonomi")
-            kelas = input("Masukkan pilihan kelas armada (1/2): ")
-            if kelas == '1':
-                harga_eksekutif = harga_total + 50000
-                print("harga total: ", harga_eksekutif)
-            elif kelas == '2':
-                harga_total = hargatiket
-                print("harga total: ", harga_total)
+            kelas = int(input("Masukkan pilihan kelas armada (1/2): "))
+            if kelas == 1:
+                armada = "Eksekutif"
+                print("Anda memilih armada ", armada)
+                hargatiket = harga_total + 50000
+                print("harga total: ", hargatiket)
             else:
-            print("Maaf, jenis kelas armada tidak tersedia")
+                armada = "Ekonomi"
+                print("Anda memilih armada ", armada)
+                hargatiket = harga_total
+                print("harga total: ", hargatiket)
+                os.system('cls')
 
             print("Pilih lokasi penjemputan: ")
             print("1. Rumah (Jasa penjemputan sebesar 5.000/km dari agen)")
