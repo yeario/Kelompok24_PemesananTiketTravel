@@ -114,5 +114,19 @@ def menu():
             else:
             print("Maaf, jenis kelas armada tidak tersedia")
 
+            print("Pilih lokasi penjemputan: ")
+            print("1. Rumah (Jasa penjemputan sebesar 5.000/km dari agen)")
+            print("2. Agen")
+            lokasi_penjemputan = input("Masukkan lokasi penjemputan (1/2): ")
+            if lokasi_penjemputan == "1":
+                jarak = input("Jarak rumah ke agen (km): ")
+                harga_bayar_jarak = harga_total + (jarak * 5000)
+                print("Harga total yang harus dibayarkan yaitu: ", harga_bayar_jarak)
+            else:
+                harga_bayar = hargatiket
+                print("Harga total yang harus dibayarkan yaitu: ", harga_bayar)
+                print("Anda harus datang ke lokasi agen sebelum keberangkatan")
+
+
     elif (menu == 2):
 menu()
