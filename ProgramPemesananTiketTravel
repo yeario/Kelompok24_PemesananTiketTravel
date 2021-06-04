@@ -129,6 +129,14 @@ def menu():
                 print("Anda harus datang ke lokasi agen sebelum keberangkatan")
                 
             #RIOO
+            #RIOO
+            #RIOO
+        print("Informasi Tiket Surat Perjanjian:")
+        print("1. Informasi yang dimasukkan merupakan data yang valid.")
+        print("2. Reschedule hanya dapat dilakukan minimal h-3 sebelum keberangkatan. Jika melebihi ketentuan maka tiket tidak dapat di-reschedule.")
+        print("3. Pembatalan tiket hanya dapat dilakukan h-3 dari tanggal keberangkatan. Jika tidak maka tiket dianggap hangus.")
+        print("4. Uang pembatalan tiket akan dikembalikan sebesar 75% dari total tagihan.")
+        print("5. Kesalahan dalam proses memasukkan data penumpang bukan tanggung jawab pihak travel.")
 
 
     elif (menu == "2"):
