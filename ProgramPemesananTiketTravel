@@ -149,6 +149,15 @@ def menu():
             jmlpnp = int(input("Masukkan jumlah penumpang: "))  # input jumlah penumpang
             print("Jumlah penumpang: ", jmlpnp)
         os.system('cls')
+
+        if jmlpnp > 12:
+            print("Maaf kursi telah habis, silahkan memilih jam/tanggal keberangkatan lain")
+        else:
+            for i in range(jmlpnp):
+                nama = input("Masukkan nama lengkap penumpang: ")
+                ktp = input("Masukkan nomor KTP: ")
+        os.system('cls')
+        print("Selamat, tiket Anda telah di-reschedule")
     
     
 menu()
