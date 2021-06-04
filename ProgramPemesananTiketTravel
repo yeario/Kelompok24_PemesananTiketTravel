@@ -127,6 +127,8 @@ def menu():
                 harga_bayar = hargatiket
                 print("Harga total yang harus dibayarkan yaitu: ", harga_bayar)
                 print("Anda harus datang ke lokasi agen sebelum keberangkatan")
+                
+            #RIOO
 
 
     elif (menu == "2"):
@@ -157,7 +159,27 @@ def menu():
                 nama = input("Masukkan nama lengkap penumpang: ")
                 ktp = input("Masukkan nomor KTP: ")
         os.system('cls')
-        print("Selamat, tiket Anda telah di-reschedule")
-    
-    
+        print("Selamat, tiket Anda telah berhasil di-reschedule")
+        
+        
+    elif (menu == "3"):
+        print("Masukkan kode bayar Anda untuk melakukan pembatalan")
+        input("kode bayar :")
+        # pengecekan data
+        tanggal_pemesanan = int(input("Masukkan tanggal pemesanan (DD) :"))
+        bulan_pemesanan = int(input("Masukkan bulan pemesanan (MM) :"))
+        tahun_pemesanan = int(input("Masukkan tahun pemesanan (YYYY):"))
+        tanggal_sekarang = int(input("Masukkan tanggal sekarang (DD):"))
+        bulan_sekarang = int(input("Masukkan bulan sekarang (MM):"))
+        tahun_sekarang = int(input("Masukkan tahun sekarang (YYYY) :"))
+
+        pembatalan = (tanggal_sekarang - tanggal_pemesanan) + ((bulan_sekarang - bulan_pemesanan) * 30) - (
+                    (tahun_sekarang - tahun_pemesanan) * 365)
+        print("pembatalan", pembatalan)
+        if pembatalan <= 3:
+            print("Tiket Anda berhasil dibatalkan, silahkan mengambil refund di agen kami.")
+        else:
+            print("Mohon maaf, tiket Anda tidak dapat di cancel.")
+       
+       
 menu()
