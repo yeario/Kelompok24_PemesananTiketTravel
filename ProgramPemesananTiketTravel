@@ -140,10 +140,8 @@ def menu():
 
 
     elif (menu == "2"):
-        print("Masukkan kode bayar Anda: ")
-        input("kode bayar :")
-        print("Masukkan tanggal baru pilihan Anda (DD/MM/YYYY)")
-        input("Tanggal baru : ")
+        print(input("Masukkan kode bayar Anda: "))
+        print(input("Masukkan tanggal baru pilihan Anda (DD/MM/YYYY): "))
         print("Pilih jam keberangkatan: ")
         print("1. 09.00 WIB")
         print("2. 20.00 WIB")
@@ -163,16 +161,11 @@ def menu():
         if jmlpnp > 12:
             print("Maaf kursi telah habis, silahkan memilih jam/tanggal keberangkatan lain")
         else:
-            for i in range(jmlpnp):
-                nama = input("Masukkan nama lengkap penumpang: ")
-                ktp = input("Masukkan nomor KTP: ")
-        os.system('cls')
-        print("Selamat, tiket Anda telah berhasil di-reschedule")
+            print("Selamat, tiket Anda telah berhasil di-reschedule")
         
         
     elif (menu == "3"):
-        print("Masukkan kode bayar Anda untuk melakukan pembatalan")
-        input("kode bayar :")
+        print(input("Masukkan kode bayar Anda untuk melakukan pembatalan: "))
         # pengecekan data
         tanggal_pemesanan = int(input("Masukkan tanggal pemesanan (DD) :"))
         bulan_pemesanan = int(input("Masukkan bulan pemesanan (MM) :"))
@@ -184,7 +177,7 @@ def menu():
         pembatalan = (tanggal_sekarang - tanggal_pemesanan) + ((bulan_sekarang - bulan_pemesanan) * 30) - (
                     (tahun_sekarang - tahun_pemesanan) * 365)
         print("pembatalan", pembatalan)
-        if pembatalan <= 3:
+        if pembatalan >= 3:
             print("Tiket Anda berhasil dibatalkan, silahkan mengambil refund di agen kami.")
         else:
             print("Mohon maaf, tiket Anda tidak dapat di cancel.")
