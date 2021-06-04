@@ -129,5 +129,26 @@ def menu():
                 print("Anda harus datang ke lokasi agen sebelum keberangkatan")
 
 
-    elif (menu == 2):
+    elif (menu == "2"):
+        print("Masukkan kode bayar Anda: ")
+        input("kode bayar :")
+        print("Masukkan tanggal baru pilihan Anda (DD/MM/YYYY)")
+        input("Tanggal baru : ")
+        print("Pilih jam keberangkatan: ")
+        print("1. 09.00 WIB")
+        print("2. 20.00 WIB")
+        jam = int(input("Masukkan jam keberangkatan Anda(1/2): "))  # memilih jam keberangkatan
+        if jam == 1:
+            jam = "09.00 WIB"
+            print("Anda memilih berangkat pukul ", jam)
+            jmlpnp = int(input("Masukkan jumlah penumpang: "))  # input jumlah penumpang
+            print("Jumlah penumpang: ", jmlpnp)
+        else:
+            jam = "20.00 WIB"
+            print("Anda memilih berangkat pukul ", jam)
+            jmlpnp = int(input("Masukkan jumlah penumpang: "))  # input jumlah penumpang
+            print("Jumlah penumpang: ", jmlpnp)
+        os.system('cls')
+    
+    
 menu()
