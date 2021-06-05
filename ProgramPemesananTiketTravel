@@ -75,10 +75,9 @@ def menu():
             hargatiket = harga * jmlpnp
             print("Harga total: ", hargatiket)
             
-        # belum selesai penulisan pengecekan sisa kursi
+       # belum selesai pengecekan sisa kursi
         os.system('cls')
-        kapasitas = 12
-        if jmlpnp < str(kapasitas):
+        if jmlpnp > 12:
             print("Maaf kursi telah habis, silahkan memilih jam/tanggal keberangkatan lain")
         else:
             for i in range(jmlpnp):
