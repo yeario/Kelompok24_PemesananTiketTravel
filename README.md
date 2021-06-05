@@ -1,10 +1,10 @@
-<span align = "center">
 # Kelompok24_PemesananTiketTravel
-###Program pemesanan tiket travel PT. Indenture Tour and Travel
+  
+### Program pemesanan tiket travel PT. Indenture Tour and Travel
 
 </span>
 
-Tugas Besar Praktikum Program Komputer 2021 Kelas C Kelompok 24 '\n'
+Tugas Besar Praktikum Program Komputer 2021 Kelas C Kelompok 24.
 Program ini dibuat untuk menciptakan cara pemesanan tiket travel yang praktis sehingga memudahkan pelanggan untuk memesan tiket travel.
 
 ## Repository
