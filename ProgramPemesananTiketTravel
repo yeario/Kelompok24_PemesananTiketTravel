@@ -115,18 +115,31 @@ def menu():
                 print("harga total: ", hargatiket)
                 os.system('cls')
 
-            print("Pilih lokasi penjemputan: ")
-            print("1. Rumah (Jasa penjemputan sebesar 5.000/km dari agen)")
-            print("2. Agen")
-            lokasi_penjemputan = input("Masukkan lokasi penjemputan (1/2): ")
-            if lokasi_penjemputan == "1":
-                jarak = input("Jarak rumah ke agen (km): ")
-                harga_bayar_jarak = harga_total + (jarak * 5000)
-                print("Harga total yang harus dibayarkan yaitu: ", harga_bayar_jarak)
-            else:
-                harga_bayar = hargatiket
-                print("Harga total yang harus dibayarkan yaitu: ", harga_bayar)
-                print("Anda harus datang ke lokasi agen sebelum keberangkatan")
+        print("Pilih lokasi penjemputan: ")
+        print("1. Rumah (Jasa penjemputan sebesar 5.000/km dari agen)")
+        print("2. Agen")
+        lokasi_penjemputan = int(input("Masukkan lokasi penjemputan (1/2): "))
+        os.system('cls')
+        if lokasi_penjemputan == 1:
+            lokasi = "Rumah"
+            print("Anda memilih lokasi penjemputan dari ", lokasi)
+            jarak = int(input("Jarak rumah ke agen (km): "))
+            harga_bayar = hargatiket + (jarak * 5000)
+            print("Harga total yang harus dibayarkan yaitu: ", int(harga_bayar))
+        else:
+            lokasi = "Agen"
+            print("Anda memilih lokasi penjemputan dari ", lokasi)
+            harga_bayar = hargatiket
+            print("Harga total yang harus dibayarkan yaitu: ", int(harga_bayar))
+            print("Anda harus datang ke lokasi agen sebelum keberangkatan")
+
+        print("Tujuan Anda: ", rute)
+        print("Jam Keberangkatan: ", jam)
+        print("Nama Lengkap Penumpang: ", nama)
+        print("Nomor KTP: ", ktp)
+        print("Armada yang dipilih: ", armada)
+        print("Lokasi Penjemputan: ", lokasi)
+        print("Harga total yang harus dibayarkan: ", harga_bayar)
                 
             #RIOO
             #RIOO
