@@ -141,9 +141,24 @@ def menu():
         print("Lokasi Penjemputan: ", lokasi)
         print("Harga total yang harus dibayarkan: ", harga_bayar)
                 
-            #RIOO
-            #RIOO
-            #RIOO
+        print("pembayaran dilakukan secara online")
+        print("1. Transfer Bank BCA")
+        print("2. GOPAY")
+        print("3. DANA")
+        metode_pembayaran = int(input("Masukan pilihan pembayaran (1/2/3): "))
+        if metode_pembayaran == 1:
+            print("Masukan kode pembayaran via BCA")
+            pby = input("kode pembayaran BCA : ")
+        elif metode_pembayaran == 2:
+            print("Masukan kode pembayaran via GOPAY")
+            input("kode pembayaran GOPAY : ")
+        elif metode_pembayaran == 3:
+            print("Masukan kode pembayaran via DANA")
+            input("kode pembayaran DANA : ")
+
+        print("Selamat, pembayaran anda telah terkonfirmasi")
+        os.system('cls')
+        
         print("Informasi Tiket Surat Perjanjian:")
         print("1. Informasi yang dimasukkan merupakan data yang valid.")
         print("2. Reschedule hanya dapat dilakukan minimal h-3 sebelum keberangkatan. Jika melebihi ketentuan maka tiket tidak dapat di-reschedule.")
