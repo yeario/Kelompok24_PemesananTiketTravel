@@ -80,7 +80,7 @@ def menu():
         kapasitas = 12
         if jmlpnp < str(kapasitas):
             print("Maaf kursi telah habis, silahkan memilih jam/tanggal keberangkatan lain")
-               else:
+        else:
             for i in range(jmlpnp):
                 nama = input("Masukkan nama lengkap penumpang: ")
                 ktp = input("Masukkan nomor KTP: ")  
