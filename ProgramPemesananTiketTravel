@@ -156,9 +156,7 @@ def menu():
             print("Masukan kode pembayaran via DANA")
             input("kode pembayaran DANA : ")
 
-        print("Selamat, pembayaran anda telah terkonfirmasi")
-        os.system('cls')
-        
+        print('\t' "Selamat, pembayaran anda telah terkonfirmasi")
         print("Informasi Tiket Surat Perjanjian:")
         print("1. Informasi yang dimasukkan merupakan data yang valid.")
         print("2. Reschedule hanya dapat dilakukan minimal h-3 sebelum keberangkatan. Jika melebihi ketentuan maka tiket tidak dapat di-reschedule.")
