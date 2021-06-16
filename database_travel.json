@@ -1,0 +1,7 @@
+[
+    {"rute": "SOC-CGK", "harga": 300000, "kursi": 12},
+    {"rute": "SOC-BDG", "harga": 250000, "kursi": 12},
+    {"rute": "SOC-BANTEN", "harga": 375000, "kursi": 12},
+    {"rute": "SOC-SMG", "harga": 100000, "kursi": 12},
+    {"rute": "SOC-SUB", "harga": 160000, "kursi": 12}
+]
