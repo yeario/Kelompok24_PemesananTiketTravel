@@ -234,6 +234,7 @@ def menu():
             harga = harga
             print("Harga total yang harus dibayarkan yaitu: ", int(harga))
             print("Anda harus datang ke lokasi agen sebelum keberangkatan")
+
         kodebayar = random()
         # mencetak kode bayar random
         print("Kode bayar:" ,round(kodebayar,3))
@@ -242,7 +243,7 @@ def menu():
         print("Jam Keberangkatan: ", jam)
         print("Armada yang dipilih: ", armada)
         print("Lokasi Penjemputan: ", lokasi)
-        print("Harga total yang harus dibayarkan: ", harga)
+        print("Harga total yang harus dibayarkan: ", int(harga))
                 
         print("pembayaran dilakukan secara online")
         print("1. Transfer Bank BCA")
