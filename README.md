@@ -13,6 +13,10 @@ Program ini dibuat untuk menciptakan cara pemesanan tiket travel yang praktis se
 - Berkas <a href="https://github.com/yeario/Kelompok24_PemesananTiketTravel/blob/main/ProgramPemesananTiketTravel">ProgramPemesananTiketTravel</a>
   Merupakan file program yang terdapat kode-kode
 - Berkas Laporan <a href="https://github.com/yeario/Kelompok24_PemesananTiketTravel/blob/main/24_Bella_Tubes%20Tahap%201.pdf">24_Bella_Tubes Tahap 1</a>
-  Merupakan laporan hasil dari tugas besar tahap 1 berupa poin-poin yaitu latar belakang,basis, diagram alir dan penjelasan, fitur-fitur, keunggulan, dan potensi di masa depan. 
+  Merupakan laporan hasil dari tugas besar tahap 1 berupa poin-poin yaitu latar belakang,basis, diagram alir dan penjelasan, fitur-fitur, keunggulan, dan potensi di masa depan.
+- Berkas database_travel.json
+  Merupakan file pendukung
+- Berkas database_user.json
+  Merupakan file pendukung
 - Berkas README.md
   Merupakan penjelasan singkat isi dari repository.
