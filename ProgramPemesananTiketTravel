@@ -268,7 +268,6 @@ def menu():
         print("4. Uang pembatalan tiket akan dikembalikan sebesar 75% dari total tagihan.")
         print("5. Kesalahan dalam proses memasukkan data penumpang bukan tanggung jawab pihak travel.")
 
-
     elif (menu == 2):
         print(input("Masukkan kode bayar Anda: "))
         print(input("Masukkan tanggal baru pilihan Anda (DD/MM/YYYY): "))
