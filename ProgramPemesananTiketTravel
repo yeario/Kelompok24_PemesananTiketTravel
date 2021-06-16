@@ -1,5 +1,34 @@
 import os
 import sys
+from datetime import datetime
+from random import random
+import json
+
+def create_json(file_name):
+    with open(file_name, 'w') as json_file:
+        json.dump([], json_file)
+
+
+def read_json(file_name):
+    with open(file_name, 'r') as json_file:
+        database = json.load(json_file)
+    return database
+
+
+def write_json(file_name, database, enter):
+    database.append(enter)
+    print("Selamat Tiket Anda berhasil di Reschedule")
+
+    with open(file_name, 'w') as json_file:
+        json.dump(database, json_file)
+
+def count_user(database, rute):
+    jumlah = 0
+
+    for data in database:
+        if data['rute'] == rute:
+            jumlah += 1
+    return jumlah
 
 def menu():
     print('\t',"INDENTURE TOUR AND TRAVEL") # tampilan awal
@@ -10,21 +39,36 @@ def menu():
     print("2. Reschedule")
     print("3. Pembatalan (cancel)")
 
-    menu = input("Masukkan menu pilihan Anda(1/2/3): ") # input pilihan menu
+    menu = int(input("Masukkan menu pilihan Anda(1/2/3): ")) # input pilihan menu
     os.system('cls')
 
-    if (menu== "1"):
+    if (menu== 1):
         print("1. One Way")
         print("2. Return")
-        rute = input("Anda akan melakukan perjalanan(1/2): ") # memilih penerbangan
-        if rute=="1":
+        def validate_date(d):
+            try:
+                datetime.strptime(d, '%d/%m/%Y')
+                return True
+                        
+            except ValueError:
+                print("Tidak valid")
+                return exit()
+                        
+        rute = int(input("Anda akan melakukan perjalanan(1/2): "))
+        if rute== 1:
+            laju = "one way"
             tanggal = input("Masukkan tanggal keberangkatan Anda(DD/MM/YYYY): ") # input tanggal berangkat apabila memilih one way
-            print("Anda melakukan perjalanan one way pada", tanggal )
-        else:
+            print(validate_date(tanggal))
+        elif rute == 2:
+            laju = "return"
             tanggal1 =input("Masukkan tanggal keberangkatan Anda(DD/MM/YYYY): ") # input tanggal berangkat apabila memilih return
             tanggal2 = input("Masukkan tanggal pulang Anda(DD/MM/YYYY): ") # input tanggal pulang apabila memilih return
-            print("Anda melakukan perjalanan return pada", tanggal1 , " dan kembali pada ",tanggal2)
-            
+            print(validate_date(tanggal1))
+            print(validate_date(tanggal2))
+        else:
+            print("Maaf angka yang anda masukkan tidak valid")
+            exit()
+    
         os.system('cls')
         print("Pilihan rute dan tarif:")
         print("1. SOC-CGK Rp 300.000 ")
@@ -32,29 +76,34 @@ def menu():
         print("3. SOC-BANTEN Rp 375.000 ")
         print("4. SOC-SMG Rp 100.000 ")
         print("5. SOC-SUB Rp 160.000 ")
-        tarif = int(input("Masukkan rute tujuan anda: ")) # memilih rute tujuan dan tarif
+    
 
+        tarif = int(input("Masukkan rute tujuan anda: ")) # memilih rute tujuan dan tarif
         if tarif == 1:
             rute = "SOC-CGK"
             harga = 300000
-            print("Tarif rute SOC-CGK : Rp ", harga)
         elif tarif == 2:
             rute = "SOC-BDG"
             harga = 250000
-            print("Tarif rute SOC-BDG : Rp ", harga)
         elif tarif == 3:
             rute = "SOC-BANTEN"
             harga = 375000
-            print("Tarif rute SOC-BANTEN: Rp ", harga)
         elif tarif == 4:
             rute = "SOC-SMG"
             harga = 100000
-            print("Tarif rute SOC-SMG : Rp ", harga)
-        else:
+        elif tarif == 5:
             rute = "SOC-SUB"
             harga = 160000
-            print("Tarif rute SOC-SUB : Rp ", harga)
+        else:
+            print("tidak valid")
+            exit()
 
+        if laju == "one way":
+            print("Tarif rute", rute, ": Rp ", harga)
+        else:
+            harga = harga *2 
+            print("Tarif rute", rute, ": Rp ", harga)
+    
         os.system('cls')
         print("Pilih jam keberangkatan: ")
         print("1. 09.00 WIB")
@@ -67,34 +116,89 @@ def menu():
             print("Jumlah penumpang: ", jmlpnp)
             hargatiket = harga * int(jmlpnp)
             print("Harga total: ", hargatiket)
-        else:
+        elif jam== 2:
             jam = "20.00 WIB"
             print("Anda memilih berangkat pukul ", jam)
             jmlpnp = int(input("Masukkan jumlah penumpang: ")) # input jumlah penumpang
             print("Jumlah penumpang: ", jmlpnp)
             hargatiket = harga * jmlpnp
             print("Harga total: ", hargatiket)
-            
-       # belum selesai pengecekan sisa kursi
-        os.system('cls')
-        if jmlpnp > 12:
-            print("Maaf kursi telah habis, silahkan memilih jam/tanggal keberangkatan lain")
         else:
+            print("Tidak valid")
+            exit()
+
+        def filter_event(database, filter_keyword):
+            category_list = []
+            for data in database:
+                category_list.append(data[filter_keyword])
+            category_list = list(set(category_list))
+            for i, category in enumerate(category_list):
+                print(i+1, category)
+            opsi = int(input(">>>"))
+
+            for data in database:
+                if data[filter_keyword] == category_list[opsi-1]:
+                    sisa_kursi = data['kursi'] - count_user(database_user, data['rute'])
+                    print('%s sisa %d kursi' % (data['rute'], sisa_kursi))
+                    print(data)
+                    travel(data)
+
+        def travel(rute):
+            print('\njumlah tiket')
+            print(len(database_user))
             for i in range(jmlpnp):
-                nama = input("Masukkan nama lengkap penumpang: ")
-                ktp = input("Masukkan nomor KTP: ")  
-        
-            alamat = input("Masukkan alamat penumpang: ")
+                enter = {
+                    'nama': input('Masukkan nama lengkap penumpang: '),
+                    'telepon': input('telepon: '),
+                    'ktp': int(input("Masukkan nomor KTP: ")),
+                    'alamat': input("Masukkan alamat penumpang: "),
+                    'rute': rute['rute']
+                }
+
+                write_json('database_user.json', database_user , enter)
+
+        def start():
+            try:
+                database_travel = read_json(DATABASE_TRAVEL)
+                database_user = read_json(DATABASE_USER)
+            except:
+                create_json(DATABASE_TRAVEL)
+                create_json(DATABASE_USER)
+                database_travel = read_json(DATABASE_TRAVEL)
+                database_user = read_json(DATABASE_USER)
+            return database_travel, database_user
+
+
+        if __name__ == '__main__':
+            DATABASE_TRAVEL = 'database_travel.json'
+            DATABASE_USER = 'database_user.json'
+
+            database_travel, database_user = start()
+
+            '''rute = menu()'''
+            filter_event(database_travel, 'rute')
+            
             os.system('cls')
             promo = input("apakah anda memiliki kode promo?(Y/T): ")
+
             if promo == 'Y':
-                input("masukan kode promo: ")
-                hargatiket = harga * jmlpnp
-                harga_total = hargatiket * 0.50
-                print("harga total: ", int(harga_total))
+                kode_promo=['DISC50']
+                def kode_promonya(kode_promo, hargatiket):
+                    Kode=input("Masukkan kode anda: ")
+                    if Kode in kode_promo:
+                        harga = hargatiket * (1-0.5)
+                        return True, harga
+                    else:
+                        print("Kode promo tidak valid")
+                        exit()
+        
+                flag=False
+                flag, harga = kode_promonya(kode_promo, hargatiket)
+                kode_promonya('DISC50', hargatiket)
+                    
             else:
-                harga_total = harga * jmlpnp
-                print("harga total: ", int(harga_total))
+                harga = hargatiket * jmlpnp
+                print("harga total: ", int(harga))
             
             os.system('cls')
             print("pilih kelas armada: ")
@@ -104,13 +208,13 @@ def menu():
             if kelas == 1:
                 armada = "Eksekutif"
                 print("Anda memilih armada ", armada)
-                hargatiket = harga_total + 50000
-                print("harga total: ", int(hargatiket))
+                harga = harga + 50000
+                print("harga total: ", int(harga))
             else:
                 armada = "Ekonomi"
                 print("Anda memilih armada ", armada)
-                hargatiket = harga_total
-                print("harga total: ", int(hargatiket))
+                harga = harga
+                print("harga total: ", int(harga))
                 os.system('cls')
 
         print("Pilih lokasi penjemputan: ")
@@ -122,13 +226,13 @@ def menu():
             lokasi = "Rumah"
             print("Anda memilih lokasi penjemputan dari ", lokasi)
             jarak = int(input("Jarak rumah ke agen (km): "))
-            harga_bayar = hargatiket + (jarak * 5000)
-            print("Harga total yang harus dibayarkan yaitu: ", int(harga_bayar))
+            harga = harga + (jarak * 5000)
+            print("Harga total yang harus dibayarkan yaitu: ", int(harga))
         else:
             lokasi = "Agen"
             print("Anda memilih lokasi penjemputan dari ", lokasi)
-            harga_bayar = hargatiket
-            print("Harga total yang harus dibayarkan yaitu: ", int(harga_bayar))
+            harga = harga
+            print("Harga total yang harus dibayarkan yaitu: ", int(harga))
             print("Anda harus datang ke lokasi agen sebelum keberangkatan")
 
         print("Tujuan Anda: ", rute)
