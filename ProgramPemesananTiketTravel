@@ -234,18 +234,19 @@ def menu():
             harga = harga
             print("Harga total yang harus dibayarkan yaitu: ", int(harga))
             print("Anda harus datang ke lokasi agen sebelum keberangkatan")
+        kodebayar = random()
+        # mencetak kode bayar random
+        print("Kode bayar:" ,round(kodebayar,3))
 
         print("Tujuan Anda: ", rute)
         print("Jam Keberangkatan: ", jam)
-        print("Nama Lengkap Penumpang: ", nama)
-        print("Nomor KTP: ", ktp)
         print("Armada yang dipilih: ", armada)
         print("Lokasi Penjemputan: ", lokasi)
-        print("Harga total yang harus dibayarkan: ", harga_bayar)
+        print("Harga total yang harus dibayarkan: ", harga)
                 
         print("pembayaran dilakukan secara online")
         print("1. Transfer Bank BCA")
-        print("2. GOPAY")
+        print("2. GOPAY") 
         print("3. DANA")
         metode_pembayaran = int(input("Masukan pilihan pembayaran (1/2/3): "))
         if metode_pembayaran == 1:
@@ -267,7 +268,7 @@ def menu():
         print("5. Kesalahan dalam proses memasukkan data penumpang bukan tanggung jawab pihak travel.")
 
 
-    elif (menu == "2"):
+    elif (menu == 2):
         print(input("Masukkan kode bayar Anda: "))
         print(input("Masukkan tanggal baru pilihan Anda (DD/MM/YYYY): "))
         print("Pilih jam keberangkatan: ")
@@ -286,13 +287,59 @@ def menu():
             print("Jumlah penumpang: ", jmlpnp)
         os.system('cls')
 
-        if jmlpnp > 12:
-            print("Maaf kursi telah habis, silahkan memilih jam/tanggal keberangkatan lain")
-        else:
-            print("Selamat, tiket Anda telah berhasil di-reschedule")
+        def filter_event(database, filter_keyword):
+            category_list = []
+            for data in database:
+                category_list.append(data[filter_keyword])
+            category_list = list(set(category_list))
+            for i, category in enumerate(category_list):
+                print(i+1, category)
+            opsi = int(input(">>>"))
+
+            for data in database:
+                if data[filter_keyword] == category_list[opsi-1]:
+                    sisa_kursi = data['kursi'] - count_user(database_user, data['rute'])
+                    print('%s sisa %d kursi' % (data['rute'], sisa_kursi))
+                    print(data)
+                    travel(data)
+
+        def travel(rute):
+            print('\njumlah tiket')
+            print(len(database_user))
+            for i in range(jmlpnp):
+                enter = {
+                    'nama': input('Masukkan nama lengkap penumpang: '),
+                    'telepon': input('telepon: '),
+                    'ktp': int(input("Masukkan nomor KTP: ")),
+                    'alamat': input("Masukkan alamat penumpang: "),
+                    'rute': rute['rute']
+                }
+
+                write_json('database_user.json', database_user , enter)
+
+        def start():
+            try:
+                database_travel = read_json(DATABASE_TRAVEL)
+                database_user = read_json(DATABASE_USER)
+            except:
+                create_json(DATABASE_TRAVEL)
+                create_json(DATABASE_USER)
+                database_travel = read_json(DATABASE_TRAVEL)
+                database_user = read_json(DATABASE_USER)
+            return database_travel, database_user
+
+
+        if _name_ == '_main_':
+            DATABASE_TRAVEL = 'database_travel.json'
+            DATABASE_USER = 'database_user.json'
+
+            database_travel, database_user = start()
+
+            '''rute = menu()'''
+            filter_event(database_travel, 'rute')
         
         
-    elif (menu == "3"):
+    elif (menu == 3):
         print(input("Masukkan kode bayar Anda untuk melakukan pembatalan: "))
         # pengecekan data
         tanggal_pemesanan = int(input("Masukkan tanggal pemesanan (DD) :"))
@@ -304,11 +351,16 @@ def menu():
 
         pembatalan = (tanggal_sekarang - tanggal_pemesanan) + ((bulan_sekarang - bulan_pemesanan) * 30) - (
                     (tahun_sekarang - tahun_pemesanan) * 365)
-        print("pembatalan", pembatalan)
-        if pembatalan >= 3:
+        print("pembatalan H", pembatalan)
+        if pembatalan <= 3:
             print("Tiket Anda berhasil dibatalkan, silahkan mengambil refund di agen kami.")
         else:
             print("Mohon maaf, tiket Anda tidak dapat di cancel.")
+
+    else:
+        print("Tidak Valid")
        
        
 menu()
+        
+        
