@@ -217,12 +217,34 @@ def menu():
                 print("harga total: ", int(harga))
                 os.system('cls')
 
-        p
+        print("Pilih lokasi penjemputan: ")
+        print("1. Rumah (Jasa penjemputan sebesar 5.000/km dari agen)")
+        print("2. Agen")
+        lokasi_penjemputan = int(input("Masukkan lokasi penjemputan (1/2): "))
+        os.system('cls')
+        if lokasi_penjemputan == 1:
+            lokasi = "Rumah"
+            print("Anda memilih lokasi penjemputan dari ", lokasi)
+            jarak = int(input("Jarak rumah ke agen (km): "))
+            harga = harga + (jarak * 5000)
+            print("Harga total yang harus dibayarkan yaitu: ", int(harga))
+        else:
+            lokasi = "Agen"
+            print("Anda memilih lokasi penjemputan dari ", lokasi)
+            harga = harga
+            print("Harga total yang harus dibayarkan yaitu: ", int(harga))
+            print("Anda harus datang ke lokasi agen sebelum keberangkatan")
 
+        kodebayar = random()
+        # mencetak kode bayar random
+        print("Kode bayar:", round(kodebayar, 3))
 
+        print("Tujuan Anda: ", rute)
+        print("Jam Keberangkatan: ", jam)
+        print("Armada yang dipilih: ", armada)
+        print("Lokasi Penjemputan: ", lokasi)
+        print("Harga total yang harus dibayarkan: ", int(harga))
 
-
-                
         print("pembayaran dilakukan secara online")
         print("1. Transfer Bank BCA")
         print("2. GOPAY") 
