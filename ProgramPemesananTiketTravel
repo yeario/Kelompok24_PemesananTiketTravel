@@ -1,5 +1,4 @@
 import os
-import sys
 from datetime import datetime # modul untuk memberikan format tanggal (DD/MM/YYYY)
 import random # Modul random menghasilkan output angka random untuk kode bayar
 import json # Mengggunakan modul json untuk membuat database dari user
@@ -270,7 +269,7 @@ def menu():
         # Output surat pemberitahuan
         # Resume pemesanan
         # format teks
-        resume = "\nTujuan: {}\nJam keberangkatan: {}\nArmada:{}\nLokasi Penjemputan:{}\nHarga:{}\n".format(rute,jam,armada,lokasi,harga)
+        resume = "\nKode bayar: {}\nTujuan: {}\nJam keberangkatan: {}\nArmada:{}\nLokasi Penjemputan:{}\nHarga:{}\n".format(kodebayar, rute,jam,armada,lokasi,harga)
         surat_perjanjian = "\n Informasi Tiket Surat Perjanjian: \n1. Informasi yang dimasukkan merupakan data yang valid. \n2. Reschedule hanya dapat dilakukan minimal h-3 sebelum keberangkatan. Jika melebihi ketentuan maka tiket tidak dapat di-reschedule. \n3. Pembatalan tiket hanya dapat dilakukan h-3 dari tanggal keberangkatan. Jika tidak maka tiket dianggap hangus.\n4. Uang pembatalan tiket akan dikembalikan sebesar 75% dari total tagihan. \n5. Kesalahan dalam proses memasukkan data penumpang bukan tanggung jawab pihak travel."
         # buka file untuk ditulis
         file_resume = open("resume.txt", "w")
