@@ -245,13 +245,6 @@ def menu():
         kodebayar = random.randint(10000,99999) 
         # mencetak kode bayar random
         print("Kode bayar:" ,kodebayar)
-
-        # Resume pemesanan
-        print("Tujuan Anda: ", rute)
-        print("Jam Keberangkatan: ", jam)
-        print("Armada yang dipilih: ", armada)
-        print("Lokasi Penjemputan: ", lokasi)
-        print("Harga total yang harus dibayarkan: ", harga)
         
         # Pilihan metode pembayaran
         print("pembayaran dilakukan secara online")
@@ -269,15 +262,25 @@ def menu():
         elif metode_pembayaran == 3:
             print("Masukan kode pembayaran via DANA")
             input("kode pembayaran DANA : ")
+        else:
+            print("Tidak valid")
+            exit()
+        print('\t' "Selamat, pembayaran anda telah terkonfirmasi")
 
         # Output surat pemberitahuan
-        print('\t' "Selamat, pembayaran anda telah terkonfirmasi")
-        print("Informasi Tiket Surat Perjanjian:")
-        print("1. Informasi yang dimasukkan merupakan data yang valid.")
-        print("2. Reschedule hanya dapat dilakukan minimal h-3 sebelum keberangkatan. Jika melebihi ketentuan maka tiket tidak dapat di-reschedule.")
-        print("3. Pembatalan tiket hanya dapat dilakukan h-3 dari tanggal keberangkatan. Jika tidak maka tiket dianggap hangus.")
-        print("4. Uang pembatalan tiket akan dikembalikan sebesar 75% dari total tagihan.")
-        print("5. Kesalahan dalam proses memasukkan data penumpang bukan tanggung jawab pihak travel.")
+        # Resume pemesanan
+        # format teks
+        resume = "\nTujuan: {}\nJam keberangkatan: {}\nArmada:{}\nLokasi Penjemputan:{}\nHarga:{}\n".format(rute,jam,armada,lokasi,harga)
+        surat_perjanjian = "\n Informasi Tiket Surat Perjanjian: \n1. Informasi yang dimasukkan merupakan data yang valid. \n2. Reschedule hanya dapat dilakukan minimal h-3 sebelum keberangkatan. Jika melebihi ketentuan maka tiket tidak dapat di-reschedule. \n3. Pembatalan tiket hanya dapat dilakukan h-3 dari tanggal keberangkatan. Jika tidak maka tiket dianggap hangus.\n4. Uang pembatalan tiket akan dikembalikan sebesar 75% dari total tagihan. \n5. Kesalahan dalam proses memasukkan data penumpang bukan tanggung jawab pihak travel."
+        # buka file untuk ditulis
+        file_resume = open("resume.txt", "w")
+
+        # Tulis teks ke file
+        file_resume.write(resume)
+        file_resume.write(surat_perjanjian)
+
+        # Tutup file
+        file_resume.close()
 
     # program pemilihan menu kedua (Reschedule)
     elif (menu == 2):
