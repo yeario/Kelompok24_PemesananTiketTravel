@@ -1,0 +1,14 @@
+
+Kode bayar: 64635
+Tujuan: SOC-CGK
+Jam keberangkatan: 09.00 WIB
+Armada:Ekonomi
+Lokasi Penjemputan:Rumah
+Harga:310000
+
+ Informasi Tiket Surat Perjanjian: 
+1. Informasi yang dimasukkan merupakan data yang valid. 
+2. Reschedule hanya dapat dilakukan minimal h-3 sebelum keberangkatan. Jika melebihi ketentuan maka tiket tidak dapat di-reschedule. 
+3. Pembatalan tiket hanya dapat dilakukan h-3 dari tanggal keberangkatan. Jika tidak maka tiket dianggap hangus.
+4. Uang pembatalan tiket akan dikembalikan sebesar 75% dari total tagihan. 
+5. Kesalahan dalam proses memasukkan data penumpang bukan tanggung jawab pihak travel.
