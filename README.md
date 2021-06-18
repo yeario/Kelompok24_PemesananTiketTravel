@@ -20,5 +20,7 @@ Program ini dibuat untuk menciptakan cara pemesanan tiket travel yang praktis se
   Merupakan file pendukung
 - Berkas 24_Bella_PPT Tubes.pptx
   Merupakan file powerpoint presentasi
+- Berkas resume.txt
+  Merupakan file pendukung yang berisi resume pemesanan dan surat perjanjian
 - Berkas README.md
   Merupakan penjelasan singkat isi dari repository.
